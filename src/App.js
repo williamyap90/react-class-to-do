@@ -1,14 +1,16 @@
 import './App.css';
 import React, { Component } from 'react';
-import ToDo from './components/ToDo';
 import Header from './components/Header';
+import CreateTask from './components/CreateTask';
+import List from './components/List';
 
 class App extends Component {
     render() {
         return (
             <div>
                 <Header />
-                <ToDo />
+                <CreateTask />
+                <List />
             </div>
         );
     }
