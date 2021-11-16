@@ -1,9 +1,16 @@
 import './App.css';
-import React from 'react';
+import React, { Component } from 'react';
+import ToDo from './components/ToDo';
+import Header from './components/Header';
 
-class App extends React.Component {
+class App extends Component {
     render() {
-        return <h1>To Do</h1>;
+        return (
+            <div>
+                <Header />
+                <ToDo />
+            </div>
+        );
     }
 }
 
