@@ -2,7 +2,7 @@ import './App.css';
 import React, { Component } from 'react';
 import Header from './components/Header';
 import ManageTasks from './components/ManageTasks';
-import List from './components/List';
+import ToDoList from './components/ToDoList';
 
 class App extends Component {
   render() {
@@ -10,7 +10,7 @@ class App extends Component {
       <div>
         <Header />
         <ManageTasks />
-        <List />
+        <ToDoList />
       </div>
     );
   }
