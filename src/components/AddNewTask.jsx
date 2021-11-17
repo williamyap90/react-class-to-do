@@ -1,16 +1,35 @@
 import React, { Component } from 'react';
 
 class AddNewTask extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { newTask: '' };
+  }
+
+  handleInputChange = (e) => {
+    this.setState({ newTask: e.target.value });
+  };
+
   render() {
+    const { updateList, toDo } = this.props.props;
     return (
-      <div>
-        <form className="new-task">
-          <input type="text" />
-          <button type="submit" value="add">
-            Add
-          </button>
-        </form>
-      </div>
+      <form className="new-task" onSubmit={(e) => updateList(e, this.state.newTask)}>
+        <h2>
+          <label htmlFor="new-todo-input">What needs to be done?</label>
+        </h2>
+        <input
+          type="text"
+          name="text"
+          autoComplete="off"
+          value={this.state.newTask}
+          onChange={(e) => {
+            this.handleInputChange(e);
+          }}
+        />
+        <button type="submit" className="btn btn__primary" value="add">
+          Add
+        </button>
+      </form>
     );
   }
 }
