@@ -6,6 +6,8 @@ class ToDo extends Component {
     return (
       <div>
         <div>{toDo.task}</div>
+        <button>Edit</button>
+        <button>Delete</button>
       </div>
     );
   }
