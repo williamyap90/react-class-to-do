@@ -13,7 +13,12 @@ class AddNewTask extends Component {
   render() {
     const { updateList, toDo } = this.props.props;
     return (
-      <form className="new-task" onSubmit={(e) => updateList(e, this.state.newTask)}>
+      <form
+        className="new-task"
+        onSubmit={(e) => {
+          updateList(e, this.state.newTask);
+          this.setState({ newTask: '' });
+        }}>
         <h2>
           <label htmlFor="new-todo-input">What needs to be done?</label>
         </h2>
