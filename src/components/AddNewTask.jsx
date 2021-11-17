@@ -11,7 +11,7 @@ class AddNewTask extends Component {
   };
 
   render() {
-    const { updateList, toDo } = this.props.props;
+    const { updateList } = this.props.props;
     return (
       <form
         className="new-task"
