@@ -4,10 +4,12 @@ class ToDo extends Component {
   render() {
     const { toDo } = this.props;
     return (
-      <div>
+      <div className="todo-item">
         <div>{toDo.task}</div>
-        <button>Edit</button>
-        <button>Delete</button>
+        <div className="todo-btn-container">
+          <button>Edit</button>
+          <button>Delete</button>
+        </div>
       </div>
     );
   }

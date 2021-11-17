@@ -18,11 +18,26 @@ body {
 button {
   border: none;
   margin: 0;
-  padding: 0.5em 1.5em;
   width: auto;
 }
+
 input {
   border: 2px solid black;
   width: 60%;
   height: 100px;
+}
+
+.todo-item {
+  display: Flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 1.5em 8em;
+  font-size: 1.5em;
+}
+
+.todo-btn-container > button {
+  width: 65px;
+  text-align: center;
+  margin-right: 1em;
+  padding: 0.5em 1em;
 }
