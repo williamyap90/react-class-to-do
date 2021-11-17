@@ -15,17 +15,22 @@ class App extends Component {
 
   updateList = (e, newTask) => {
     e.preventDefault();
-    // console.log(this.state, 'state before');
+
     const currentToDos = this.state.toDo.map((item) => {
       return (item = { ...item });
     });
-
     const newId = currentToDos.reduce((a, b) => (a.id > b.id ? a : b)).id + 1;
     currentToDos.push({ id: newId, task: newTask, complete: false });
 
-    this.setState({ toDo: currentToDos }, () => {
-      // console.log(this.state, 'state after');
+    this.setState({ toDo: currentToDos }, () => {});
+  };
+
+  removeTask = (taskId) => {
+    const updatedToDos = this.state.toDo.filter((item) => {
+      return item.id !== taskId;
     });
+
+    this.setState({ toDo: updatedToDos });
   };
 
   render() {
@@ -33,7 +38,7 @@ class App extends Component {
       <div>
         <Header />
         <ManageTasks toDo={this.state.toDo} updateList={this.updateList} />
-        <ToDoList toDo={this.state.toDo} />
+        <ToDoList toDo={this.state.toDo} removeTask={this.removeTask} />
       </div>
     );
   }

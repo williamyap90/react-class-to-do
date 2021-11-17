@@ -2,17 +2,21 @@ import React, { Component } from 'react';
 
 class ToDo extends Component {
   render() {
-    const { toDo } = this.props;
+    const { toDo, removeTask } = this.props;
+
     return (
       <div className="todo-item">
         <div>{toDo.task}</div>
         <div className="todo-btn-container">
-          <button>Edit</button>
-          <button>Delete</button>
+          <button onClick={() => console.log('edit clicked')}>Edit</button>
+          <button onClick={() => removeTask(toDo.id)}>Delete</button>
         </div>
       </div>
     );
   }
 }
+
+// filters functionality
+// edit functionality
 
 export default ToDo;
