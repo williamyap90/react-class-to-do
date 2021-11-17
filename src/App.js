@@ -33,12 +33,27 @@ class App extends Component {
     this.setState({ toDo: updatedToDos });
   };
 
+  handleChecked = (taskId, isChecked) => {
+    const updateToDos = this.state.toDo.map((item) => {
+      if (item.id === taskId) {
+        return { ...item, complete: isChecked };
+      }
+      return (item = { ...item });
+    });
+
+    this.setState({ toDo: updateToDos });
+  };
+
+  filterTasks = () => {
+    console.log('filters triggered');
+  };
+
   render() {
     return (
       <div>
         <Header />
         <ManageTasks toDo={this.state.toDo} updateList={this.updateList} />
-        <ToDoList toDo={this.state.toDo} removeTask={this.removeTask} />
+        <ToDoList toDo={this.state.toDo} removeTask={this.removeTask} handleChecked={this.handleChecked} />
       </div>
     );
   }
