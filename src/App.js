@@ -13,16 +13,13 @@ class App extends Component {
     };
   }
 
-  updateList = (e, newTask) => {
+  addTask = (e, addTask) => {
     e.preventDefault();
 
-    const currentToDos = this.state.toDo.map((item) => {
-      return (item = { ...item });
-    });
-    const newId = currentToDos.reduce((a, b) => (a.id > b.id ? a : b)).id + 1;
-    currentToDos.push({ id: newId, task: newTask, complete: false });
+    const newId = this.state.toDo.reduce((a, b) => (a.id > b.id ? a : b)).id + 1;
+    const newTask = { id: newId, task: addTask, complete: false };
 
-    this.setState({ toDo: currentToDos }, () => {});
+    this.setState({ ...this.state, toDo: [...this.state.toDo, newTask] });
   };
 
   removeTask = (taskId) => {
@@ -30,18 +27,18 @@ class App extends Component {
       return item.id !== taskId;
     });
 
-    this.setState({ toDo: updatedToDos });
+    this.setState({ ...this.state, toDo: updatedToDos });
   };
 
   handleChecked = (taskId, isChecked) => {
-    const updateToDos = this.state.toDo.map((item) => {
+    const updateToDo = this.state.toDo.map((item) => {
       if (item.id === taskId) {
         return { ...item, complete: isChecked };
       }
-      return (item = { ...item });
+      return item;
     });
 
-    this.setState({ toDo: updateToDos });
+    this.setState({ ...this.state, toDo: updateToDo });
   };
 
   filterTasks = () => {
@@ -52,7 +49,7 @@ class App extends Component {
     return (
       <div>
         <Header />
-        <ManageTasks toDo={this.state.toDo} updateList={this.updateList} />
+        <ManageTasks toDo={this.state.toDo} addTask={this.addTask} />
         <ToDoList toDo={this.state.toDo} removeTask={this.removeTask} handleChecked={this.handleChecked} />
       </div>
     );
