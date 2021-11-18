@@ -11,12 +11,12 @@ class AddNewTask extends Component {
   };
 
   render() {
-    const { updateList } = this.props.props;
+    const { addTask } = this.props.props;
     return (
       <form
         className="new-task"
         onSubmit={(e) => {
-          updateList(e, this.state.newTask);
+          addTask(e, this.state.newTask);
           this.setState({ newTask: '' });
         }}>
         <h2>
