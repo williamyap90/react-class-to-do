@@ -55,3 +55,16 @@ input[type='checkbox'] {
 .strikethrough {
   text-decoration: line-through;
 }
+
+.filters-btn-container {
+  margin: 2em auto;
+  display: flex;
+  width: 60%;
+  align-items: center;
+  justify-content: space-around;
+}
+.filters-btn-container > button {
+  font-size: 1.5em;
+  width: 100px;
+  padding: 0.5em 1em;
+}
