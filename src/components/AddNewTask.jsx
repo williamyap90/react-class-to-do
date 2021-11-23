@@ -10,15 +10,17 @@ class AddNewTask extends Component {
     this.setState({ newTask: e.target.value });
   };
 
+  handleSubmit = (e) => {
+    e.preventDefault();
+    const newId = this.props.toDo.reduce((a, b) => (a.id > b.id ? a : b)).id + 1;
+
+    this.props.addTask(newId, this.state.newTask);
+    this.setState({ newTask: '' });
+  };
+
   render() {
-    const { addTask } = this.props.props;
     return (
-      <form
-        className="new-task"
-        onSubmit={(e) => {
-          addTask(e, this.state.newTask);
-          this.setState({ newTask: '' });
-        }}>
+      <form className="new-task" onSubmit={this.handleSubmit}>
         <h2>
           <label htmlFor="new-todo-input">What needs to be done?</label>
         </h2>

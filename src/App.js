@@ -3,42 +3,26 @@ import React, { Component } from 'react';
 import Header from './components/Header';
 import ManageTasks from './components/ManageTasks';
 import ToDoList from './components/ToDoList';
-import data from './data.json';
+import { connect } from 'react-redux';
 
 class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      toDo: data,
-    };
-  }
-
-  addTask = (e, addTask) => {
-    e.preventDefault();
-
-    const newId = this.state.toDo.reduce((a, b) => (a.id > b.id ? a : b)).id + 1;
-    const newTask = { id: newId, task: addTask, complete: false };
-
-    this.setState({ ...this.state, toDo: [...this.state.toDo, newTask] });
-  };
-
   removeTask = (taskId) => {
-    const updatedToDos = this.state.toDo.filter((item) => {
+    const updatedToDos = this.props.toDo.filter((item) => {
       return item.id !== taskId;
     });
 
-    this.setState({ ...this.state, toDo: updatedToDos });
+    this.setState({ ...this.props, toDo: updatedToDos });
   };
 
   handleChecked = (taskId, isChecked) => {
-    const updateToDo = this.state.toDo.map((item) => {
+    const updateToDo = this.props.toDo.map((item) => {
       if (item.id === taskId) {
         return { ...item, complete: isChecked };
       }
       return item;
     });
 
-    this.setState({ ...this.state, toDo: updateToDo });
+    this.setState({ ...this.props, toDo: updateToDo });
   };
 
   filterTasks = () => {
@@ -49,11 +33,25 @@ class App extends Component {
     return (
       <div>
         <Header />
-        <ManageTasks toDo={this.state.toDo} addTask={this.addTask} />
-        <ToDoList toDo={this.state.toDo} removeTask={this.removeTask} handleChecked={this.handleChecked} />
+        <ManageTasks toDo={this.props.toDo} addTask={this.props.addTask} />
+        <ToDoList toDo={this.props.toDo} removeTask={this.removeTask} handleChecked={this.handleChecked} />
       </div>
     );
   }
 }
 
-export default App;
+const mapStateToProps = (state) => {
+  return {
+    toDo: state.toDo,
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    addTask: (newId, newTask) => {
+      dispatch({ type: 'ADD_TASK', id: newId, body: newTask });
+    },
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);

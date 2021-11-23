@@ -6,7 +6,7 @@ class ManageTasks extends Component {
   render() {
     return (
       <div>
-        <AddNewTask props={this.props} />
+        <AddNewTask toDo={this.props.toDo} addTask={this.props.addTask} />
         <FilterTasks />
       </div>
     );
