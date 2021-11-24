@@ -3,7 +3,7 @@ import ToDo from './ToDo';
 
 class ToDoList extends Component {
   render() {
-    const { toDo, removeTask, handleChecked } = this.props;
+    const { toDo, removeTask, handleChecked, editTask } = this.props;
 
     const outstandingTasks = toDo.filter((item) => item.complete !== true);
 
@@ -12,7 +12,7 @@ class ToDoList extends Component {
         {outstandingTasks.length ? <h2>{outstandingTasks.length} tasks remaining</h2> : <h2>You have no tasks outstanding</h2>}
 
         {toDo.map((item) => {
-          return <ToDo key={item.id} toDo={item} removeTask={removeTask} handleChecked={handleChecked} />;
+          return <ToDo key={item.id} toDo={item} removeTask={removeTask} handleChecked={handleChecked} editTask={editTask} />;
         })}
       </div>
     );

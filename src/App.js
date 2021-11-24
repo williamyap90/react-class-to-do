@@ -15,7 +15,7 @@ class App extends Component {
       <div>
         <Header />
         <ManageTasks toDo={this.props.toDo} addTask={this.props.addTask} />
-        <ToDoList toDo={this.props.toDo} removeTask={this.props.removeTask} handleChecked={this.props.handleChecked} />
+        <ToDoList toDo={this.props.toDo} removeTask={this.props.removeTask} handleChecked={this.props.handleChecked} editTask={this.props.editTask} />
       </div>
     );
   }
@@ -37,6 +37,9 @@ const mapDispatchToProps = (dispatch) => {
     },
     handleChecked: (id, isChecked) => {
       dispatch({ type: 'TOGGLE_CHECKED', id: id, isChecked: isChecked });
+    },
+    editTask: (id, newTaskBody) => {
+      dispatch({ type: 'EDIT_TASK', id: id, body: newTaskBody });
     },
   };
 };
