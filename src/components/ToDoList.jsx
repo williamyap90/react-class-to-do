@@ -9,11 +9,7 @@ class ToDoList extends Component {
 
     return (
       <div>
-        {outstandingTasks.length ? (
-          <h2>{outstandingTasks.length} tasks remaining</h2>
-        ) : (
-          <h2>You have no tasks outstanding</h2>
-        )}
+        {outstandingTasks.length ? <h2>{outstandingTasks.length} tasks remaining</h2> : <h2>You have no tasks outstanding</h2>}
 
         {toDo.map((item) => {
           return <ToDo key={item.id} toDo={item} removeTask={removeTask} handleChecked={handleChecked} />;

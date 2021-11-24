@@ -6,17 +6,6 @@ import ToDoList from './components/ToDoList';
 import { connect } from 'react-redux';
 
 class App extends Component {
-  handleChecked = (taskId, isChecked) => {
-    const updateToDo = this.props.toDo.map((item) => {
-      if (item.id === taskId) {
-        return { ...item, complete: isChecked };
-      }
-      return item;
-    });
-
-    this.setState({ ...this.props, toDo: updateToDo });
-  };
-
   filterTasks = () => {
     console.log('filters triggered');
   };
@@ -26,7 +15,7 @@ class App extends Component {
       <div>
         <Header />
         <ManageTasks toDo={this.props.toDo} addTask={this.props.addTask} />
-        <ToDoList toDo={this.props.toDo} removeTask={this.props.removeTask} handleChecked={this.handleChecked} />
+        <ToDoList toDo={this.props.toDo} removeTask={this.props.removeTask} handleChecked={this.props.handleChecked} />
       </div>
     );
   }
@@ -45,6 +34,9 @@ const mapDispatchToProps = (dispatch) => {
     },
     removeTask: (id) => {
       dispatch({ type: 'DELETE_TASK', id: id });
+    },
+    handleChecked: (id, isChecked) => {
+      dispatch({ type: 'TOGGLE_CHECKED', id: id, isChecked: isChecked });
     },
   };
 };
