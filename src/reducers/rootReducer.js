@@ -1,4 +1,5 @@
 import data from '../data.json';
+import * as actionTypes from '../actions/actionTypes';
 
 const initState = {
   toDo: data,
@@ -7,15 +8,36 @@ const initState = {
 const rootReducer = (state = initState, action) => {
   console.log(action);
 
-  if (action.type === 'ADD_TASK') {
-    const newTask = { id: action.id, task: action.body, complete: false };
-    return {
-      ...state,
-      toDo: [...state.toDo, newTask],
-    };
+  switch (action.type) {
+    case actionTypes.ADD_TASK: {
+      const newTask = { id: action.id, task: action.body, complete: false };
+      return {
+        ...state,
+        toDo: [...state.toDo, newTask],
+      };
+    }
+    case actionTypes.DELETE_TASK: {
+      const updatedToDos = state.toDo.filter((item) => item.id !== action.id);
+      return {
+        ...state,
+        toDo: updatedToDos,
+      };
+    }
+    case actionTypes.TOGGLE_CHECKED: {
+      const updateToDos = state.toDo.map((item) => {
+        if (item.id === action.id) {
+          return { ...item, complete: action.isChecked };
+        }
+        return item;
+      });
+      return {
+        ...state,
+        toDo: updateToDos,
+      };
+    }
+    default:
+      return state;
   }
-
-  return state;
 };
 
 export default rootReducer;
