@@ -35,6 +35,20 @@ const rootReducer = (state = initState, action) => {
         toDo: updateToDos,
       };
     }
+    //needs fixing
+    case actionTypes.EDIT_TASK: {
+      const updatedToDos = state.toDo.map((item) => {
+        if (item.id === action.id) {
+          return { ...item, task: action.body };
+        }
+        return item;
+      });
+      console.log(updatedToDos, 'inedittask');
+      return {
+        ...state,
+        toDo: updatedToDos,
+      };
+    }
     default:
       return state;
   }
