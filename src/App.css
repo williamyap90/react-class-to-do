@@ -21,7 +21,6 @@ button {
 }
 
 input[type='text'] {
-  border: 2px solid black;
   width: 60%;
   height: 100px;
 }
@@ -43,6 +42,10 @@ input[type='checkbox'] {
   display: Flex;
   align-items: center;
   justify-content: flex-start;
+}
+
+.todo-btn-container {
+  display: flex;
 }
 
 .todo-btn-container > button {
@@ -67,4 +70,12 @@ input[type='checkbox'] {
   font-size: 1.5em;
   width: 100px;
   padding: 0.5em 1em;
+}
+
+.edit-box {
+  width: 125px;
+  max-height: 30px;
+  font-size: 1em;
+  margin-left: -0.2em;
+  border: none;
 }
