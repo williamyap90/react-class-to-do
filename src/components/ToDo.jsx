@@ -34,14 +34,8 @@ class ToDo extends Component {
     });
   };
 
-  handleSaveEdit = (e, id) => {
-    e.preventDefault();
-    this.props.editTask(id, this.state.newTaskBody);
-  };
-
   render() {
     const { toDo, removeTask, handleChecked, editTask } = this.props;
-
     return (
       <div className="todo-item">
         <div className="todo-todo-container">
@@ -54,41 +48,41 @@ class ToDo extends Component {
             }}
           />
           {this.state.editing ? (
-            // <form id="edit-form" className="edit-box" onSubmit={(e) => this.handleSaveEdit(e, toDo.id)}>
             <input className="edit-box" autoFocus type="text" id="edit" placeholder={toDo.task} onChange={(e) => this.handleInputChange(e)} />
           ) : (
-            // </form>
             <span className={toDo.complete ? 'strikethrough' : ''}>{toDo.task}</span>
           )}
         </div>
 
         <div className="todo-btn-container">
           {this.state.editing ? (
-            <button
-              type="submit"
-              form="edit-form"
-              style={{ backgroundColor: 'green', color: 'white' }}
-              onClick={(e) => {
-                this.handleSaveEdit(e, toDo.id);
-                handleChecked(toDo.id, false);
-                this.toggleEditing();
-              }}>
-              Save
-            </button>
+            <>
+              <button
+                type="submit"
+                form="edit-form"
+                style={{ backgroundColor: 'green', color: 'white' }}
+                onClick={(e) => {
+                  e.preventDefault();
+                  editTask(toDo.id, this.state.newTaskBody);
+                  handleChecked(toDo.id, false);
+                  this.toggleEditing();
+                }}>
+                Save
+              </button>
+              <button
+                onClick={() => {
+                  this.handleCancel();
+                }}>
+                Cancel
+              </button>
+            </>
           ) : (
-            <button onClick={() => this.toggleEditing()}>Edit</button>
-          )}
-          {this.state.editing ? (
-            <button
-              onClick={() => {
-                this.handleCancel();
-              }}>
-              Cancel
-            </button>
-          ) : (
-            <button style={{ backgroundColor: 'red', color: 'white' }} onClick={() => removeTask(toDo.id)}>
-              Delete
-            </button>
+            <>
+              <button onClick={() => this.toggleEditing()}>Edit</button>
+              <button style={{ backgroundColor: 'red', color: 'white' }} onClick={() => removeTask(toDo.id)}>
+                Delete
+              </button>
+            </>
           )}
         </div>
       </div>
