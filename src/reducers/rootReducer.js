@@ -6,8 +6,6 @@ const initState = {
 };
 
 const rootReducer = (state = initState, action) => {
-  console.log(action);
-
   switch (action.type) {
     case actionTypes.ADD_TASK: {
       const newTask = { id: action.id, task: action.body, complete: false };
@@ -35,7 +33,6 @@ const rootReducer = (state = initState, action) => {
         toDo: updateToDos,
       };
     }
-    //needs fixing
     case actionTypes.EDIT_TASK: {
       const updatedToDos = state.toDo.map((item) => {
         if (item.id === action.id) {
@@ -43,7 +40,6 @@ const rootReducer = (state = initState, action) => {
         }
         return item;
       });
-      console.log(updatedToDos, 'inedittask');
       return {
         ...state,
         toDo: updatedToDos,

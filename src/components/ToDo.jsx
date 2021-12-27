@@ -7,8 +7,6 @@ class ToDo extends Component {
   };
 
   toggleEditing = () => {
-    console.log('edit clicked');
-
     this.setState((state) => {
       return {
         ...state,
@@ -27,7 +25,6 @@ class ToDo extends Component {
   };
 
   handleCancel = () => {
-    console.log('cancel clicked');
     this.setState((state) => {
       return {
         ...state,
@@ -39,7 +36,6 @@ class ToDo extends Component {
 
   handleSaveEdit = (e, id) => {
     e.preventDefault();
-    console.log(this.state.newTaskBody, 'newtaskBody');
     this.props.editTask(id, this.state.newTaskBody);
   };
 
@@ -101,6 +97,4 @@ class ToDo extends Component {
 }
 
 // filters functionality
-// edit functionality
-
 export default ToDo;
