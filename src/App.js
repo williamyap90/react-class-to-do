@@ -6,10 +6,6 @@ import ToDoList from './components/ToDoList';
 import { connect } from 'react-redux';
 
 class App extends Component {
-  filterTasks = () => {
-    console.log('filters triggered');
-  };
-
   render() {
     return (
       <div>
