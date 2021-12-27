@@ -34,6 +34,15 @@ class ToDo extends Component {
     });
   };
 
+  resetTaskBody = () => {
+    this.setState((state) => {
+      return {
+        ...state,
+        newTaskBody: '',
+      };
+    });
+  };
+
   render() {
     const { toDo, removeTask, handleChecked, editTask } = this.props;
     return (
@@ -62,10 +71,15 @@ class ToDo extends Component {
                 form="edit-form"
                 style={{ backgroundColor: 'green', color: 'white' }}
                 onClick={(e) => {
-                  e.preventDefault();
-                  editTask(toDo.id, this.state.newTaskBody);
-                  handleChecked(toDo.id, false);
-                  this.toggleEditing();
+                  if (this.state.newTaskBody === '') {
+                    alert('Task cannot be blank.');
+                  } else {
+                    e.preventDefault();
+                    editTask(toDo.id, this.state.newTaskBody);
+                    handleChecked(toDo.id, false);
+                    this.resetTaskBody();
+                    this.toggleEditing();
+                  }
                 }}>
                 Save
               </button>
