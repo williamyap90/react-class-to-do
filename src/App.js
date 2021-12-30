@@ -10,8 +10,8 @@ class App extends Component {
     return (
       <div>
         <Header />
-        <ManageTasks toDo={this.props.toDo} addTask={this.props.addTask} />
-        <ToDoList toDo={this.props.toDo} removeTask={this.props.removeTask} handleChecked={this.props.handleChecked} editTask={this.props.editTask} />
+        <ManageTasks toDo={this.props.toDo} addTask={this.props.addTask} updateFilter={this.props.updateFilter} />
+        <ToDoList toDo={this.props.toDo} removeTask={this.props.removeTask} handleChecked={this.props.handleChecked} editTask={this.props.editTask} filter={this.props.filter} />
       </div>
     );
   }
@@ -20,6 +20,7 @@ class App extends Component {
 const mapStateToProps = (state) => {
   return {
     toDo: state.toDo,
+    filter: state.filter,
   };
 };
 
@@ -36,6 +37,9 @@ const mapDispatchToProps = (dispatch) => {
     },
     editTask: (id, newTaskBody) => {
       dispatch({ type: 'EDIT_TASK', id: id, body: newTaskBody });
+    },
+    updateFilter: (selectedFilter) => {
+      dispatch({ type: 'UPDATE_FILTER', filter: selectedFilter });
     },
   };
 };

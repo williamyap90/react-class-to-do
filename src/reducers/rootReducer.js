@@ -45,6 +45,12 @@ const rootReducer = (state = initState, action) => {
         toDo: updatedToDos,
       };
     }
+    case actionTypes.UPDATE_FILTER: {
+      return {
+        ...state,
+        filter: action.filter,
+      };
+    }
     default:
       return state;
   }
