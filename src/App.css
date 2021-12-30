@@ -64,11 +64,12 @@ input[type='checkbox'] {
   display: flex;
   width: 60%;
   align-items: center;
-  justify-content: space-around;
+  justify-content: center;
+  gap: 20px;
 }
 .filters-btn-container > button {
   font-size: 1.5em;
-  width: 100px;
+  min-width: 100px;
   padding: 0.5em 1em;
 }
 
