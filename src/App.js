@@ -10,7 +10,7 @@ class App extends Component {
     return (
       <div>
         <Header />
-        <ManageTasks toDo={this.props.toDo} addTask={this.props.addTask} updateFilter={this.props.updateFilter} />
+        <ManageTasks toDo={this.props.toDo} addTask={this.props.addTask} updateFilter={this.props.updateFilter} filter={this.props.filter} />
         <ToDoList toDo={this.props.toDo} removeTask={this.props.removeTask} handleChecked={this.props.handleChecked} editTask={this.props.editTask} filter={this.props.filter} />
       </div>
     );
