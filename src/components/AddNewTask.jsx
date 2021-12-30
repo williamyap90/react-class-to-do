@@ -20,23 +20,25 @@ class AddNewTask extends Component {
 
   render() {
     return (
-      <form className="new-task" onSubmit={this.handleSubmit}>
+      <>
         <h2>
           <label htmlFor="new-todo-input">What needs to be done?</label>
         </h2>
-        <input
-          type="text"
-          name="text"
-          autoComplete="off"
-          value={this.state.newTask}
-          onChange={(e) => {
-            this.handleInputChange(e);
-          }}
-        />
-        <button type="submit" className="btn btn__primary" value="add">
-          Add
-        </button>
-      </form>
+        <form className="new-task" onSubmit={this.handleSubmit}>
+          <input
+            type="text"
+            name="text"
+            autoComplete="off"
+            value={this.state.newTask}
+            onChange={(e) => {
+              this.handleInputChange(e);
+            }}
+          />
+          <button type="submit" className="btn btn__primary" value="add">
+            Add
+          </button>
+        </form>
+      </>
     );
   }
 }

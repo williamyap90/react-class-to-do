@@ -5,13 +5,13 @@
 }
 html {
   font: 62.5% / 1.15 sans-serif;
+  text-align: center;
 }
 
 body {
-  margin: 0;
+  margin: 0 auto;
   height: 100vh;
   padding: 1.5em;
-  text-align: center;
 }
 
 button {
@@ -21,7 +21,7 @@ button {
 }
 
 input[type='text'] {
-  width: 60%;
+  width: 350px;
   height: 100px;
 }
 
@@ -30,12 +30,22 @@ input[type='checkbox'] {
   margin-right: 2em;
 }
 
+.app-container {
+  margin: 0 auto;
+  max-width: 500px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
 .todo-item {
-  display: Flex;
+  display: flex;
   align-items: center;
   justify-content: space-between;
   font-size: 1.5em;
-  margin: 2em 3em;
+  margin-bottom: 1.25em;
+  width: 350px;
 }
 
 .todo-todo-container {
@@ -46,12 +56,13 @@ input[type='checkbox'] {
 
 .todo-btn-container {
   display: flex;
+  align-self: flex-end;
 }
 
 .todo-btn-container > button {
   width: 65px;
   text-align: center;
-  margin-right: 1em;
+  margin-left: 1em;
   padding: 0.5em 1em;
 }
 
@@ -62,9 +73,9 @@ input[type='checkbox'] {
 .filters-btn-container {
   margin: 2em auto;
   display: flex;
-  width: 60%;
+  width: 350px;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   gap: 20px;
 }
 .filters-btn-container > button {
@@ -79,4 +90,19 @@ input[type='checkbox'] {
   font-size: 1em;
   margin-left: -0.2em;
   border: none;
+}
+
+.new-task {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.new-task > button {
+  margin-top: 1em;
+  width: 350px;
+  padding: 0.5em 1em;
+  font-size: 1.5em;
+  background-color: black;
+  color: white;
 }

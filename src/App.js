@@ -8,7 +8,7 @@ import { connect } from 'react-redux';
 class App extends Component {
   render() {
     return (
-      <div>
+      <div className="app-container">
         <Header />
         <ManageTasks toDo={this.props.toDo} addTask={this.props.addTask} updateFilter={this.props.updateFilter} filter={this.props.filter} />
         <ToDoList toDo={this.props.toDo} removeTask={this.props.removeTask} handleChecked={this.props.handleChecked} editTask={this.props.editTask} filter={this.props.filter} />
