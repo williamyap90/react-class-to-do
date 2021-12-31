@@ -3,6 +3,7 @@ import * as actionTypes from '../actions/actionTypes';
 
 const initState = {
   toDo: data,
+  filter: 'SHOW_ALL',
 };
 
 const rootReducer = (state = initState, action) => {
