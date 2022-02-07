@@ -1,0 +1,10 @@
+{
+  "dependencies": {
+    "express": "^4.17.2",
+    "mongoose": "^6.2.0"
+  },
+  "devDependencies": {
+    "dotenv": "^16.0.0",
+    "nodemon": "^2.0.15"
+  }
+}
