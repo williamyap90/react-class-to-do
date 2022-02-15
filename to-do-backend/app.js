@@ -8,7 +8,9 @@ app.get('/', (req, res) => {
 });
 
 const port = 3000;
-app.listen(port, () => {
+
+app.listen(port, (err) => {
+  if (err) throw err;
   console.log(`Listening on port ${port}`);
 });
 
